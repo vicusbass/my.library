@@ -12,13 +12,13 @@
         $rows = $db->select("SELECT * FROM books");
         ?>
         <div class="row">
-            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#addBookForm"
+            <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#addBookForm"
                     aria-expanded="false" aria-controls="addBookForm">
                 Add book
             </button>
         </div>
-        <div class="row mt-1">
-            <div class="collapse" id="addBookForm">
+        <div class="row mt-1 collapse" id="addBookForm">
+            <div class="col-6">
                 <form>
                     <div class="form-group row">
                         <label for="title" class="col-sm-2 col-form-label">Title</label>
@@ -32,6 +32,19 @@
                             <input type="text" class="form-control" id="authors" placeholder="Authors">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="isbn" class="col-sm-2 col-form-label">ISBN</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="isbn" placeholder="ISBN">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="year" class="col-sm-2 col-form-label">Edition (year)</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="year" placeholder="Year">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save book</button>
                 </form>
             </div>
         </div>
