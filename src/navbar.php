@@ -19,7 +19,7 @@
                 <a class="nav-link" href="duebooks.php"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>&nbsp; Due books</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#"><i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp; Customers</a>
+                <a class="nav-link" href="users.php"><i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp; Users</a>
             </li>
         </ul>
     </div>

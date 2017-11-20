@@ -44,6 +44,12 @@
                             <input type="number" class="form-control" id="year" placeholder="Year">
                         </div>
                     </div>
+                    <div class="form-group row">
+                        <label for="copies" class="col-sm-2 col-form-label">Copies</label>
+                        <div class="col-sm-10">
+                            <input type="number" class="form-control" id="copies" placeholder="Number of copies">
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary">Save book</button>
                 </form>
             </div>
@@ -58,6 +64,7 @@
                     <th scope="col">Authors</th>
                     <th scope="col">Edition</th>
                     <th scope="col">ISBN</th>
+                    <th scope="col">Available</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -69,6 +76,7 @@
                     echo "<td>" . $row["authors"] . "</td>";
                     echo "<td>" . $row["year"] . "</td>";
                     echo "<td>" . $row["isbn"] . "</td>";
+                    echo "<td>" . $row["available"] . "</td>";
                     echo "</tr>";
                 }
                 ?>
