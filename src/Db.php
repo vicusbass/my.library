@@ -39,4 +39,13 @@ class Db
         $result = $connection->query($query);
         return $result;
     }
+
+    public function query_prepared($sql)
+    {
+        $connection = $this->connect();
+        $statement = $connection->prepare($sql);
+        return $statement;
+    }
+
+
 }
