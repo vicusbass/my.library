@@ -14,7 +14,5 @@
     </div>
 </main>
 
-<?php include 'jsscripts.php'; ?>
-
 </body>
 </html>

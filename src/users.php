@@ -7,29 +7,6 @@
 
 <main role="main" class="container">
     <div class="starter-template">
-        <?php
-        $db = new Db();
-        $rows = $db->select("SELECT * FROM users ORDER BY last_name");
-
-        if (isset($_POST['submit'])) {
-
-            try {
-                $new_user = array(
-                    "first_name" => $_POST['first_name'],
-                    "last_name" => $_POST['last_name'],
-                    "email" => $_POST['email'],
-                );
-                $sql = "INSERT INTO users (first_name, last_name, email) VALUES (?, ?, ?)";
-
-                $statement = $db->query_prepared($sql);
-                $statement->bind_param("sss", implode(", ", array_keys($new_user)));
-                $statement->execute();
-            } catch (PDOException $error) {
-                echo $sql . "<br>" . $error->getMessage();
-            }
-
-        }
-        ?>
         <div class="row">
             <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#addUser"
                     aria-expanded="false" aria-controls="addUser">
@@ -38,7 +15,7 @@
         </div>
         <div class="row mt-1 collapse" id="addUser">
             <div class="col-6">
-                <form method="post">
+                <form method="post" action="users.php" role="form" name="addUser">
                     <div class="form-group row">
                         <label for="first_name" class="col-sm-2 col-form-label">First name</label>
                         <div class="col-sm-10">
@@ -59,10 +36,45 @@
                             <input type="email" class="form-control" id="email" name="email" placeholder="email">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save user</button>
+                    <div class="form-group row">
+                        <div class="col-sm-10  col-sm-offset-2">
+                            <input type="submit" name="submit" value="Save" class="btn btn-success"/>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
+        <?php
+        $db = new Db();
+        $rows = $db->select("SELECT * FROM users ORDER BY last_name");
+        if (isset($_POST['submit'])) {
+            $first_name = $_POST['first_name'];
+            $last_name = $_POST['last_name'];
+            $email = $_POST['email'];
+            $sql = "INSERT INTO users (first_name, last_name, email) VALUES (?, ?, ?)";
+
+            $connection = $db->connect();
+            $statement = $connection->prepare($sql);
+            if ($statement) {
+                $statement->bind_param("sss", $first_name, $last_name, $email);
+                if ($statement->execute()) {
+                    echo '<script type="text/javascript">',
+                    '$(document).ready(function () {',
+                    'toastr.success("New user added!");',
+                    '});',
+                    '</script>';
+                } else {
+                    echo '<script type="text/javascript">',
+                    '$(document).ready(function () {',
+                    'toastr.error("Unable to add user!");',
+                    '});',
+                    '</script>';
+                }
+            } else {
+                echo $statement->errno . $statement->error;
+            }
+        }
+        ?>
         <div class="row mt-1">
             <table class="table">
                 <thead class="thead-light">
@@ -90,8 +102,6 @@
         </div>
     </div>
 </main>
-
-<?php include 'jsscripts.php'; ?>
 
 </body>
 </html>
