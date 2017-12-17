@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'header.php'; ?>
-<?php include 'Db.php'; ?>
 <body>
 <?php include 'navbar.php'; ?>
 
@@ -15,7 +14,7 @@
         </div>
         <div class="row mt-1 collapse" id="addUser">
             <div class="col-6">
-                <form method="post" action="users.php" role="form" name="addUser">
+                <form method="post" role="form" id="addUserForm" name="addUser" action="adduser.php">
                     <div class="form-group row">
                         <label for="first_name" class="col-sm-2 col-form-label">First name</label>
                         <div class="col-sm-10">
@@ -44,64 +43,38 @@
                 </form>
             </div>
         </div>
-        <?php
-        $db = new Db();
-        $rows = $db->select("SELECT * FROM users ORDER BY last_name");
-        if (isset($_POST['submit'])) {
-            $first_name = $_POST['first_name'];
-            $last_name = $_POST['last_name'];
-            $email = $_POST['email'];
-            $sql = "INSERT INTO users (first_name, last_name, email) VALUES (?, ?, ?)";
-
-            $connection = $db->connect();
-            $statement = $connection->prepare($sql);
-            if ($statement) {
-                $statement->bind_param("sss", $first_name, $last_name, $email);
-                if ($statement->execute()) {
-                    echo '<script type="text/javascript">',
-                    '$(document).ready(function () {',
-                    'toastr.success("New user added!");',
-                    '});',
-                    '</script>';
-                } else {
-                    echo '<script type="text/javascript">',
-                    '$(document).ready(function () {',
-                    'toastr.error("Unable to add user!");',
-                    '});',
-                    '</script>';
-                }
-            } else {
-                echo $statement->errno . $statement->error;
-            }
-        }
-        ?>
-        <div class="row mt-1">
-            <table class="table">
-                <thead class="thead-light">
-
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Last name</th>
-                    <th scope="col">First name</th>
-                    <th scope="col">Email</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                foreach ($rows as $row) {
-                    echo "<tr>";
-                    echo "<th scope='row'>" . $row["id"] . "</th>";
-                    echo "<td>" . $row["last_name"] . "</td>";
-                    echo "<td>" . $row["first_name"] . "</td>";
-                    echo "<td>" . $row["email"] . "</td>";
-                    echo "</tr>";
-                }
-                ?>
-                </tbody>
-            </table>
+        <div id="tableContainer">
+            <?php include 'userstable.php'; ?>
         </div>
     </div>
 </main>
+<script type='text/javascript'>
+    /* attach a submit handler to the form */
+    $("#addUserForm").submit(function (event) {
+
+        /* stop form from submitting normally */
+        event.preventDefault();
+
+        /* get the action attribute from the <form action=""> element */
+        var $form = $(this),
+            url = $form.attr('action');
+        /* Send the data using post with element id name and name2*/
+        var posting = $.post(url, {
+            first_name: $('#first_name').val(),
+            last_name: $('#last_name').val(),
+            email: $('#email').val(),
+            submit: true
+        });
+
+        /* Alerts the results */
+        posting.done(function (data) {
+            var content = $(data).find('#usersTable');
+            $("#tableContainer").empty().append(data);
+            $('#addUserForm')[0].reset();
+            toastr.success("New user added!");
+        });
+    });
+</script>
 
 </body>
 </html>
