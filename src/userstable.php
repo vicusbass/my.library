@@ -9,6 +9,7 @@
                 <th scope="col">Last name</th>
                 <th scope="col">First name</th>
                 <th scope="col">Email</th>
+                <th scope="col">Remove</th>
             </tr>
             </thead>
             <tbody>
@@ -21,6 +22,7 @@
                 echo "<td>" . $row["last_name"] . "</td>";
                 echo "<td>" . $row["first_name"] . "</td>";
                 echo "<td>" . $row["email"] . "</td>";
+                echo "<td><a class='btn btn-danger' href='#'><i onclick='deleteUser(" . $row["id"] . ")' class='fa fa-trash' title='delete'></i></a></td>";
                 echo "</tr>";
             }
             ?>

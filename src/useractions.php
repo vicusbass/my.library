@@ -16,5 +16,16 @@ if (isset($_POST['first_name'])) {
         echo "<div>" . $statement->errno . $statement->error . "</div>";
     }
 }
+if(isset($_POST['submit'])){
+    $idval=$_POST['submit'];
+    $query="DELETE FROM users where id=$idval";
+    $connection = $db->connect();
+    $statement = $connection->prepare($query);
+    if ($statement) {
+        $statement->execute();
+    } else {
+        echo "<div>" . $statement->errno . $statement->error . "</div>";
+    }
+}
 include 'userstable.php';
 ?>
