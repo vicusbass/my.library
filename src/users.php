@@ -79,7 +79,7 @@
         $.ajax({
             url: 'useractions.php',
             type: 'POST',
-            data: {'submit': id}, // An object with the key 'submit' and value 'true;
+            data: {'deleteUser': id},
             success: function (result) {
                 $("#tableContainer").html(result);
                 toastr.success("User removed");
