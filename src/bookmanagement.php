@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'header.php'; ?>
-<?php include 'Db.php'; ?>
+<?php include_once 'Db.php'; ?>
 <body>
 <?php include 'navbar.php'; ?>
 
@@ -12,10 +12,13 @@
         $rows = $db->select("SELECT * FROM books");
         ?>
         <div class="row">
-            <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#addBookForm"
+            <button class="btn btn-outline-primary btn-space" type="button" data-toggle="collapse" data-target="#addBookForm"
                     aria-expanded="false" aria-controls="addBookForm">
                 Add book
             </button>
+            <a class="btn btn-link btn-space" type="button" href="searchbook.php">
+                Search book
+            </a>
         </div>
         <div class="row mt-1 collapse" id="addBookForm">
             <div class="col-6">
