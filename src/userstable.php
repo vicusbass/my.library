@@ -15,8 +15,9 @@
             </thead>
             <tbody>
             <?php
-            $db = new Db();
-            $rows = $db->select("SELECT * FROM users ORDER BY last_name");
+            require('Db.php');
+            $q = "SELECT * FROM users ORDER BY last_name";
+            $rows = @mysqli_query($dbc, $q);
             foreach ($rows as $row) {
                 echo "<tr>";
                 echo "<th scope='row'>" . $row["id"] . "</th>";
@@ -27,6 +28,7 @@
                 echo "<td><a class='btn btn-danger' href='#'><i onclick='deleteUser(" . $row["id"] . ")' class='fa fa-trash' title='delete'></i></a></td>";
                 echo "</tr>";
             }
+            mysqli_close($dbc);
             ?>
             </tbody>
         </table>

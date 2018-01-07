@@ -3,17 +3,19 @@
 <?php include 'header.php'; ?>
 <body>
 <?php include 'navbar.php'; ?>
-<?php include_once 'Db.php'; ?>
 
 <main role="main" class="container">
     <div class="starter-template">
         <?php
-        $db = new Db();
-        $rows = $db->select("SELECT * FROM users WHERE id=" . $_GET["id"]);
-        $first_name = $rows[0]["first_name"];
-        $last_name = $rows[0]["last_name"];
-        $email = $rows[0]["email"];
-        $id = $rows[0]["id"];
+        require('Db.php');
+        $id = $_GET["id"];
+        $q = "SELECT first_name, last_name, email FROM users WHERE id='$id'";
+        $r = @mysqli_query($dbc, $q);
+        $row = mysqli_fetch_array($r, MYSQLI_NUM);
+
+        $first_name = $row[0];
+        $last_name = $row[1];
+        $email = $row[2];
         ?>
         <? ob_start(); ?>
         <div class="row mt-1" id="editUser">
