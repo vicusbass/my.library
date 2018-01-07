@@ -8,12 +8,13 @@
 <main role="main" class="container">
     <div class="starter-template">
         <?php
-        $db = new Db();
-        $rows = $db->select("SELECT rentals.id, users.last_name last_name, users.first_name first_name, books.title title, books.authors authors, rentals.expiration_date expiration_date
+        require('Db.php');
+        $q = "SELECT rentals.id, users.last_name last_name, users.first_name first_name, books.title title, books.authors authors, rentals.expiration_date expiration_date
 FROM rentals
 INNER JOIN users ON users.id=rentals.user_id
 INNER JOIN books ON books.id=rentals.book_id
-ORDER BY expiration_date DESC;");
+ORDER BY expiration_date DESC;";
+        $rows = @mysqli_query($dbc, $q);
         ?>
         <div class="row">
             <button class="btn btn-outline-primary" type="button" data-toggle="collapse" data-target="#addBookForm"
@@ -46,6 +47,7 @@ ORDER BY expiration_date DESC;");
                     echo "<td>" . $row["expiration_date"] . "</td>";
                     echo "</tr>";
                 }
+                mysqli_close($dbc);
                 ?>
                 </tbody>
             </table>

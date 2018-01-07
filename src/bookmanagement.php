@@ -8,11 +8,13 @@
 <main role="main" class="container">
     <div class="starter-template">
         <?php
-        $db = new Db();
-        $rows = $db->select("SELECT * FROM books");
+        require('Db.php');
+        $q = "SELECT * FROM books";
+        $rows = @mysqli_query($dbc, $q);
         ?>
         <div class="row">
-            <button class="btn btn-outline-primary btn-space" type="button" data-toggle="collapse" data-target="#addBookForm"
+            <button class="btn btn-outline-primary btn-space" type="button" data-toggle="collapse"
+                    data-target="#addBookForm"
                     aria-expanded="false" aria-controls="addBookForm">
                 Add book
             </button>
@@ -82,6 +84,7 @@
                     echo "<td>" . $row["available"] . "</td>";
                     echo "</tr>";
                 }
+                mysqli_close($dbc);
                 ?>
                 </tbody>
             </table>
