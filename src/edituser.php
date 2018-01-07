@@ -13,11 +13,12 @@
         $first_name = $rows[0]["first_name"];
         $last_name = $rows[0]["last_name"];
         $email = $rows[0]["email"];
+        $id = $rows[0]["id"];
         ?>
         <? ob_start(); ?>
         <div class="row mt-1" id="editUser">
             <div class="col-6">
-                <form method="put" role="form" id="editUserForm" name="editUser" action="useractions.php">
+                <form method="post" role="form" id="editUser" name="editUser" action="useractions.php">
                     <div class="form-group row">
                         <label for="first_name" class="col-sm-2 col-form-label">First name</label>
                         <div class="col-sm-10">
@@ -38,9 +39,10 @@
                             <input type="email" class="form-control" id="email" name="email" value=<?= $email; ?>>
                         </div>
                     </div>
+                    <input type="hidden" class="form-control" id="id" name="id" value=<?= $id; ?>>
                     <div class="form-group row">
                         <div class="col-sm-10  col-sm-offset-2">
-                            <input type="submit" name="submit" value="Save" class="btn btn-success"/>
+                            <input type="submit" name="editUser" value="Save" class="btn btn-success"/>
                         </div>
                     </div>
                 </form>
