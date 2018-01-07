@@ -14,7 +14,7 @@
         </div>
         <div class="row mt-1 collapse" id="addUser">
             <div class="col-6">
-                <form method="post" role="form" id="addUserForm" name="addUser" action="adduser.php">
+                <form method="post" role="form" id="addUserForm" name="addUser" action="useractions.php">
                     <div class="form-group row">
                         <label for="first_name" class="col-sm-2 col-form-label">First name</label>
                         <div class="col-sm-10">
@@ -74,6 +74,18 @@
             toastr.success("New user added!");
         });
     });
+
+    function deleteUser(id) {
+        $.ajax({
+            url: 'useractions.php',
+            type: 'POST',
+            data: {'deleteUser': id},
+            success: function (result) {
+                $("#tableContainer").html(result);
+                toastr.success("User removed");
+            }
+        });
+    }
 </script>
 
 </body>
