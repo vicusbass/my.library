@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'header.php'; ?>
-<?php include 'Db.php'; ?>
 <body>
 <?php include 'navbar.php'; ?>
 
