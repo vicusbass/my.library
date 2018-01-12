@@ -50,7 +50,8 @@
                     require('Db.php');
                     $isbn = mysqli_real_escape_string($dbc, $_REQUEST['isbn']);
                     $authors = mysqli_real_escape_string($dbc, $_REQUEST['authors']);
-                    $q = "SELECT * FROM books WHERE isbn LIKE '%" . $isbn . "%' AND authors LIKE '%" . $authors . "%'";
+                    $title = mysqli_real_escape_string($dbc, $_REQUEST['title']);
+                    $q = "SELECT * FROM books WHERE isbn LIKE '%" . $isbn . "%' AND authors LIKE '%" . $authors . "%' AND title LIKE '%" . $title . "%'";
                     $r = @mysqli_query($dbc, $q);
                     while ($row = mysqli_fetch_array($r, MYSQLI_ASSOC)) {
                         echo "<tr>";
