@@ -1,4 +1,3 @@
-<?php include_once 'Db.php'; ?>
 <div id="usersTable">
     <div class="row mt-1">
         <table class="table">
