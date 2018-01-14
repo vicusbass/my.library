@@ -3,9 +3,14 @@
 <?php include 'header.php'; ?>
 <body>
 <?php include 'navbar.php'; ?>
-<div class="page-header">
-    <h1>Hi, <b><?php echo $_SESSION['email']; ?></b>. Welcome to our site.</h1>
-</div>
-<p><a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a></p>
+<main role="main" class="container">
+    <div class="starter-template">
+        <div class="row mt-1" id="searchBookForm">
+            <h1>Hi, <b><?php echo $_SESSION['first_name'] . ' ' . $_SESSION['last_name']; ?></b>. Welcome to our
+                library.
+            </h1>
+        </div>
+    </div>
+</main>
 </body>
 </html>

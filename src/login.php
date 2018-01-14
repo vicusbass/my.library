@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate credentials
     if (empty($email_err) && empty($password_err)) {
         // Prepare a select statement
-        $sql = "SELECT email, password, isadmin, id FROM users WHERE email = ?";
+        $sql = "SELECT email, password, isadmin, id, first_name, last_name FROM users WHERE email = ?";
 
         if ($stmt = mysqli_prepare($dbc, $sql)) {
             // Bind variables to the prepared statement as parameters
@@ -41,7 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 // Check if email exists, if yes then verify password
                 if (mysqli_stmt_num_rows($stmt) == 1) {
                     // Bind result variables
-                    mysqli_stmt_bind_result($stmt, $email, $hashed_password, $isadmin, $id);
+                    mysqli_stmt_bind_result($stmt, $email, $hashed_password, $isadmin, $id, $first_name, $last_name);
                     if (mysqli_stmt_fetch($stmt)) {
                         if (password_verify($password, $hashed_password)) {
                             /* Password is correct, so start a new session and
@@ -50,6 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $_SESSION['email'] = $email;
                             $_SESSION['isadmin'] = $isadmin;
                             $_SESSION['id'] = $id;
+                            $_SESSION['first_name'] = $first_name;
+                            $_SESSION['last_name'] = $last_name;
                             if ($isadmin) {
                                 header("location: admin/index.php");
                             } else {
