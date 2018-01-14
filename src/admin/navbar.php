@@ -2,8 +2,8 @@
 // Initialize the session
 session_start();
 
-// If session variable is not set it will redirect to login page
-if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+// If session variable is not set or NOT an admin it will redirect to login page
+if (!isset($_SESSION['isadmin']) || empty($_SESSION['isadmin']) || !isset($_SESSION['email']) || empty($_SESSION['email'])) {
     header("location: ../login.php");
     exit;
 }
@@ -22,14 +22,19 @@ if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
                             class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="searchbook.php"><i class="fa fa-search fa-fw" aria-hidden="true"></i>&nbsp;
-                    Search book</a>
+                <a class="nav-link" href="bookmanagement.php"><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;
+                    Book
+                    management</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="duebooks.php"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>&nbsp; Due
                     books</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="users.php"><i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp;
+                    Users</a>
+            </li>
         </ul>
-        <a class="btn-danger" href="logout.php"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp; Logout</a>
+        <a class="btn-danger" href="../logout.php"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>&nbsp; Logout</a>
     </div>
 </nav>

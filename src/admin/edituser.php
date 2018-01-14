@@ -7,7 +7,7 @@
 <main role="main" class="container">
     <div class="starter-template">
         <?php
-        require('Db.php');
+        require('../../config/Db.php');
         $id = $_GET["id"];
         $q = "SELECT first_name, last_name, email FROM users WHERE id='$id'";
         $r = @mysqli_query($dbc, $q);

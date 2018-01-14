@@ -3,16 +3,9 @@
 <?php include 'header.php'; ?>
 <body>
 <?php include 'navbar.php'; ?>
-
-<main role="main" class="container">
-    <div class="starter-template">
-        <h3>Welcome to my library</h3>
-        <?php
-        echo "<h4>" . date("h:i:s") . "</h4>";
-        ?>
-
-    </div>
-</main>
-
+<div class="page-header">
+    <h1>Hi, <b><?php echo $_SESSION['email']; ?></b>. Welcome to our site.</h1>
+</div>
+<p><a href="logout.php" class="btn btn-danger">Sign Out of Your Account</a></p>
 </body>
 </html>

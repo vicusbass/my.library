@@ -42,13 +42,12 @@
                     <th scope="col">Edition</th>
                     <th scope="col">ISBN</th>
                     <th scope="col">Available</th>
-                    <th scope="col">Rent</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php
                 if (isset($_GET['searchBook'])) {
-                    require('../config/Db.php');
+                    require('../../config/Db.php');
                     $isbn = mysqli_real_escape_string($dbc, $_REQUEST['isbn']);
                     $authors = mysqli_real_escape_string($dbc, $_REQUEST['authors']);
                     $title = mysqli_real_escape_string($dbc, $_REQUEST['title']);
@@ -62,7 +61,6 @@
                         echo "<td>" . $row["year"] . "</td>";
                         echo "<td>" . $row["isbn"] . "</td>";
                         echo "<td>" . $row["available"] . "</td>";
-                        echo "<td><a class='btn btn-success' href='#'><i class='fa fa-cart-plus' title='rent'></i></a></td>";
                         echo "</tr>";
                     }
 

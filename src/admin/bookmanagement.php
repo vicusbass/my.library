@@ -55,7 +55,7 @@
             </div>
         </div>
         <?php
-        require('Db.php');
+        require('../../config/Db.php');
         if (isset($_POST['title'], $_POST['authors'], $_POST['isbn'], $_POST['year'], $_POST['copies'])) {
             $title = $_POST['title'];
             $authors = $_POST['authors'];

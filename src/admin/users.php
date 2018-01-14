@@ -36,6 +36,13 @@
                         </div>
                     </div>
                     <div class="form-group row">
+                        <label for="password" class="col-sm-2 col-form-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="password" name="password"
+                                   placeholder="password">
+                        </div>
+                    </div>
+                    <div class="form-group row">
                         <div class="col-sm-10  col-sm-offset-2">
                             <input type="submit" name="submit" value="Save" class="btn btn-success"/>
                         </div>
@@ -63,6 +70,7 @@
             first_name: $('#first_name').val(),
             last_name: $('#last_name').val(),
             email: $('#email').val(),
+            password: $('#password').val(),
             submit: true
         });
 

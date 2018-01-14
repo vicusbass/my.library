@@ -1,5 +1,5 @@
 <?php
-require('Db.php');
+require('../../config/Db.php');
 
 if (isset($_POST['editUser']) && isset($_POST['first_name'])
     && isset($_POST['last_name']) && isset($_POST['email'])) {
@@ -14,11 +14,13 @@ if (isset($_POST['editUser']) && isset($_POST['first_name'])
     } else {
         echo "<div>" . mysqli_error($dbc) . "</div>";
     }
-} else if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['email'])) {
+} else if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['email'])
+    && isset($_POST['password'])) {
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
-    $sql = "INSERT INTO users (first_name, last_name, email) VALUES ('$first_name', '$last_name', '$email')";
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $sql = "INSERT INTO users (first_name, last_name, email, password) VALUES ('$first_name', '$last_name', '$email', '$password')";
     $r = @mysqli_query($dbc, $sql);
 
     if (!$r) {

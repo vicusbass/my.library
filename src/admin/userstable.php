@@ -14,7 +14,7 @@
             </thead>
             <tbody>
             <?php
-            require('Db.php');
+            require('../../config/Db.php');
             $q = "SELECT * FROM users ORDER BY last_name";
             $rows = @mysqli_query($dbc, $q);
             foreach ($rows as $row) {
