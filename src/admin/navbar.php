@@ -17,20 +17,20 @@ if (!isset($_SESSION['isadmin']) || empty($_SESSION['isadmin']) || !isset($_SESS
 
     <div class="collapse navbar-collapse" id="navbarItems">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home <span
+            <li class="nav-item <?php echo($_SERVER['PHP_SELF'] == '/admin/index.php' ? ' active' : ''); ?>">
+                <a class="nav-link" href="index.php"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home <span
                             class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <?php echo($_SERVER['PHP_SELF'] == '/admin/bookmanagement.php' ? ' active' : ''); ?>">
                 <a class="nav-link" href="bookmanagement.php"><i class="fa fa-book fa-fw" aria-hidden="true"></i>&nbsp;
                     Book
                     management</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <?php echo($_SERVER['PHP_SELF'] == '/admin/duebooks.php' ? ' active' : ''); ?>">
                 <a class="nav-link" href="duebooks.php"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>&nbsp; Due
                     books</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <?php echo($_SERVER['PHP_SELF'] == '/admin/users.php' ? ' active' : ''); ?>">
                 <a class="nav-link" href="users.php"><i class="fa fa-users fa-fw" aria-hidden="true"></i>&nbsp;
                     Users</a>
             </li>

@@ -17,15 +17,16 @@ if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
 
     <div class="collapse navbar-collapse" id="navbarItems">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home <span
+            <li class="nav-item <?php echo($_SERVER['PHP_SELF'] == '/index.php' ? ' active' : ''); ?>">
+                <a class="nav-link" href="index.php"><i class="fa fa-home fa-fw" aria-hidden="true"></i>&nbsp; Home
+                    <span
                             class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <?php echo($_SERVER['PHP_SELF'] == '/searchbook.php' ? ' active' : ''); ?>">
                 <a class="nav-link" href="searchbook.php"><i class="fa fa-search fa-fw" aria-hidden="true"></i>&nbsp;
                     Search book</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item <?php echo($_SERVER['PHP_SELF'] == '/duebooks.php' ? ' active' : ''); ?>">
                 <a class="nav-link" href="duebooks.php"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>&nbsp; Due
                     books</a>
             </li>
