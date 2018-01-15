@@ -20,9 +20,7 @@ ORDER BY expiration_date DESC;";
         <div class="row mt-1">
             <table class="table">
                 <thead class="thead-light">
-
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">Title</th>
                     <th scope="col">Authors</th>
                     <th scope="col">Expiration date</th>
@@ -32,8 +30,7 @@ ORDER BY expiration_date DESC;";
                 <?php
                 foreach ($rows as $row) {
                     echo "<tr>";
-                    echo "<th scope='row'>" . $row["id"] . "</th>";
-                    echo "<td>" . $row["title"] . "</td>";
+                    echo "<th scope='row'>" . $row["title"] . "</th>";
                     echo "<td>" . $row["authors"] . "</td>";
                     echo "<td>" . $row["expiration_date"] . "</td>";
                     echo "</tr>";

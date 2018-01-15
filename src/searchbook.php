@@ -62,7 +62,7 @@
                         echo "<td>" . $row["year"] . "</td>";
                         echo "<td>" . $row["isbn"] . "</td>";
                         echo "<td>" . $row["available"] . "</td>";
-                        echo "<td><a class='btn btn-success' href='#'><i class='fa fa-cart-plus' title='rent'></i></a></td>";
+                        echo "<td><a class='btn btn-success' href='rentbook.php?bookid=" . $row["id"] . "'><i class='fa fa-cart-plus' title='rent'></i></a></td>";
                         echo "</tr>";
                     }
 
