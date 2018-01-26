@@ -41,9 +41,10 @@
                         }
                     }
                 }
+                mysqli_free_result($r1);
             }
             mysqli_free_result($r);
-            mysqli_free_result($r1);
+
             mysqli_close($dbc);
         }
 
