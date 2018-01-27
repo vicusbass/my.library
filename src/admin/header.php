@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="../assets/local.css">
     <link rel="stylesheet" href="../assets/font-awesome.min.css">
     <link href="../assets/toastr.min.css" rel="stylesheet"/>
-    <script src="../libs/jquery-3.2.1.slim.js"></script>
+    <script src="../libs/jquery-3.3.1.min.js"></script>
     <script src="../libs/popper_1.12.3.js"></script>
     <script src="../libs/tether.min.js"></script>
     <script src="../libs/bootstrap.min.js"></script>

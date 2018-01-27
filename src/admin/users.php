@@ -84,6 +84,7 @@
     });
 
     function deleteUser(id) {
+        console.log('Started');
         $.ajax({
             url: 'useractions.php',
             type: 'POST',
