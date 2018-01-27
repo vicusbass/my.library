@@ -1,5 +1,5 @@
 # my.library
-###PHP school project
+### PHP school project
 
 Proiectul implementeaza gestiunea unei biblioteci. Aplicatia Web contine doua
 parti, interfata de administrator si interfata de utilizator. In momentul autentificarii,
@@ -18,7 +18,7 @@ poate adauga/edita/sterge utilizatori
 - exista un formular de inregistrare standard, bazat pe nume, email si parola, aceasta din urma fiind `hashed` 
 la salvarea in baza de date, pentru extra securitate
 
-###Tehnologii utilizare
+### Tehnologii utilizate
 
 - PHP 7.1
 - MySQL
